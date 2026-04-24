@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>EXPOKAI | Cultura Japonesa en Chile</title>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Nunito:wght@400;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
@@ -430,7 +430,11 @@
 
   /* ── EVENTO DESTACADO ── */
   .featured-event {
-    background: linear-gradient(135deg, rgba(8,0,26,0.95), rgba(18,0,48,0.95));
+    background:
+      radial-gradient(ellipse 100% 70% at 50% 50%, rgba(123,47,190,0.3) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 40% at 10% 20%, rgba(76,201,240,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 90% 80%, rgba(247,37,133,0.2) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(8,0,26,0.98), rgba(18,0,48,0.98));
   }
 
   .event-hero-card {
@@ -746,7 +750,11 @@
 
   /* ── ACTIVIDADES ── */
   .activities-section {
-    background: linear-gradient(180deg, var(--fondo-dark) 0%, var(--fondo-mid) 100%);
+    background:
+      radial-gradient(ellipse 100% 60% at 50% 0%, rgba(247,37,133,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 50% at 0% 100%, rgba(76,201,240,0.15) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 50% at 100% 50%, rgba(123,47,190,0.2) 0%, transparent 55%),
+      linear-gradient(180deg, #0D0025 0%, #08001A 100%);
   }
 
   .activities-grid {
@@ -758,8 +766,8 @@
   }
 
   .activity-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(76,201,240,0.25);
+    background: rgba(123,47,190,0.18);
+    border: 1px solid rgba(76,201,240,0.35);
     border-radius: 20px;
     padding: 0;
     text-align: center;
@@ -792,6 +800,10 @@
     height: 160px;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
+  }
+  .activity-card:hover .activity-photo {
+    transform: scale(1.04);
   }
 
   .activity-photo-placeholder {
@@ -913,7 +925,9 @@
   /* ── COUNTDOWN ── */
   .countdown-section {
     background:
-      radial-gradient(ellipse at 50% 0%, rgba(123,47,190,0.5), transparent 70%),
+      radial-gradient(ellipse 110% 70% at 50% 0%, rgba(123,47,190,0.65) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(247,37,133,0.25) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(76,201,240,0.2) 0%, transparent 55%),
       var(--fondo-dark);
     text-align: center;
   }
@@ -974,7 +988,10 @@
 
   /* ── CONTACTO ── */
   .contact-section {
-    background: linear-gradient(180deg, var(--fondo-dark), var(--fondo-mid));
+    background:
+      radial-gradient(ellipse 90% 50% at 50% 0%, rgba(76,201,240,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 40% at 0% 80%, rgba(247,37,133,0.15) 0%, transparent 55%),
+      linear-gradient(180deg, #08001A 0%, #0D0025 100%);
   }
 
   .contact-grid {
@@ -1260,23 +1277,119 @@
   }
 
   /* Responsive */
+  /* ── BASE para imágenes del hero (desktop) ── */
+  .hero-logo-img  { height: 160px; }
+  .hero-mascot-img { height: 200px; }
+
+  /* ── TABLET 900px ── */
   @media (max-width: 900px) {
-    .event-hero-card { grid-template-columns: 1fr; gap: 36px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 28px; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-    .event-detail-grid { grid-template-columns: 1fr; }
+    .event-hero-card  { grid-template-columns: 1fr; gap: 36px; }
+    .contact-grid     { grid-template-columns: 1fr; gap: 28px; }
+    .nav-links        { display: none; }
+    .hamburger        { display: flex; }
+    .event-detail-grid { grid-template-columns: 1fr 1fr; }
+    .activities-grid  { grid-template-columns: repeat(2, 1fr); }
+    .guests-grid      { grid-template-columns: repeat(3, 1fr); }
+
+    /* Hero tablet */
+    .hero             { padding: 100px 5% 70px; }
+    .hero-logo-wrapper { gap: 24px; }
+    .hero-logo-img    { height: 130px; }
+    .hero-mascot-img  { height: 160px; }
   }
 
+  /* ── MÓVIL 600px ── */
   @media (max-width: 600px) {
-    section { padding: 70px 4%; }
-    .countdown-wrapper { gap: 12px; }
-    .countdown-unit { padding: 18px 20px; min-width: 80px; }
-    .countdown-num { font-size: 2.2rem; }
-    .guests-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero-logo-wrapper { gap: 16px; }
-    .hero-logo-placeholder { height: 120px; min-width: 160px; }
-    .hero-mascot-placeholder { height: 150px; }
+    /* General */
+    section { padding: 60px 4%; }
+    .section-title { font-size: 1.5rem; }
+
+    /* Nav */
+    nav { padding: 10px 4%; }
+
+    /* Hero — apilar logo y mascota verticalmente */
+    .hero {
+      padding: 90px 4% 60px;
+      min-height: 100svh; /* safe area en iOS */
+    }
+    .hero-content { width: 100%; max-width: 100%; }
+    .hero-badge {
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      padding: 6px 14px;
+      margin-bottom: 18px;
+    }
+    .hero-logo-wrapper {
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .hero-logo-img   { height: 90px;  width: auto; max-width: 85vw; }
+    .hero-mascot-img { height: 120px; width: auto; max-width: 55vw; }
+    .hero-title-sub {
+      font-size: clamp(0.9rem, 4vw, 1.2rem) !important;
+      margin-bottom: 8px !important;
+    }
+    .hero-sub {
+      font-size: 0.88rem;
+      margin: 10px 0 24px;
+      line-height: 1.5;
+    }
+    .hero-buttons { gap: 10px; }
+    .btn-primary, .btn-secondary {
+      padding: 12px 20px;
+      font-size: 0.85rem;
+    }
+
+    /* Eventos */
+    .events-grid      { grid-template-columns: 1fr; }
+    .event-hero-title { font-size: 1.5rem; }
+    .event-detail-grid { grid-template-columns: 1fr; }
+    .event-hero-card  { gap: 28px; }
+
+    /* Actividades */
+    .activities-grid  { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .activity-photo   { height: 120px; }
+    .activity-card-top { padding: 10px 12px 8px; }
+    .activity-card-top .activity-name { font-size: 0.82rem; }
+    .activity-card-body { padding: 10px 12px 14px; }
+    .activity-desc    { font-size: 0.78rem; }
+
+    /* Invitados */
+    .guests-grid      { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .guest-card       { padding: 20px 12px; }
+    .guest-avatar     { width: 64px; height: 64px; }
+    .guest-name       { font-size: 0.78rem; }
+    .guest-role       { font-size: 0.68rem; }
+
+    /* Countdown */
+    .countdown-wrapper { gap: 8px; }
+    .countdown-unit   { padding: 14px 12px; min-width: 68px; }
+    .countdown-num    { font-size: 1.8rem; }
+    .countdown-label  { font-size: 0.62rem; letter-spacing: 1.5px; }
+
+    /* Contacto */
+    .contact-info-block, .social-block { padding: 22px 16px; }
+    .map-container iframe { height: 200px !important; }
+
+    /* Footer */
+    footer { padding: 32px 4%; }
+  }
+
+  /* ── MÓVIL PEQUEÑO 380px ── */
+  @media (max-width: 380px) {
+    .hero { padding: 80px 4% 50px; }
+    .hero-logo-img   { height: 75px; }
+    .hero-mascot-img { height: 100px; }
+    .hero-badge      { font-size: 0.65rem; letter-spacing: 1px; }
+    .hero-sub        { font-size: 0.82rem; }
+
+    .activities-grid { grid-template-columns: 1fr; }
+    .guests-grid     { grid-template-columns: 1fr 1fr; }
+    .countdown-unit  { padding: 10px 8px; min-width: 56px; }
+    .countdown-num   { font-size: 1.5rem; }
+    .events-grid     { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -1293,7 +1406,7 @@
       <img src="LOGO_OFICIAL_1.jpg" alt="Expokai" style="width:46px;height:46px;border-radius:50%;border:2px solid var(--rosado);object-fit:cover;">
     -->
     <img src="logo.png" alt="Expokai" style="width:46px;height:46px;border-radius:50%;border:2px solid var(--rosado);object-fit:cover;">
-    <span class="nav-brand">EXPOKAI</span>
+    <img src="logotipo.png" alt="EXPOKAI" style="height:28px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(247,37,133,0.4));">
   </a>
   <ul class="nav-links">
     <li><a href="#eventos">Eventos</a></li>
@@ -1333,12 +1446,12 @@
         REEMPLAZAR ESTE DIV POR LA IMAGEN DEL LOGO GRANDE:
         <img src="LOGO_OFICIAL_2.jpg" alt="Expokai" style="height:160px;object-fit:contain;">
       -->
-      <img src="logotipo.png" alt="Expokai" style="height:160px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(247,37,133,0.5));">
+      <img src="logotipo.png" alt="Expokai" class="hero-logo-img" style="object-fit:contain;filter:drop-shadow(0 0 24px rgba(247,37,133,0.5));">
       <!--
         REEMPLAZAR ESTE DIV POR LA IMAGEN DE LA MASCOTA:
         <img src="MASCOTA.png" alt="Mascota Expokai" style="height:200px;object-fit:contain;animation:mascotFloat 3s ease-in-out infinite;">
       -->
-      <img src="2 HERO.png" alt="Mascota Expokai" style="height:200px;object-fit:contain;animation:mascotFloat 3s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(76,201,240,0.4));">
+      <img src="2 HERO.png" alt="Mascota Expokai" class="hero-mascot-img" style="object-fit:contain;animation:mascotFloat 3s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(76,201,240,0.4));">
     </div>
 
     <h1 class="hero-title-sub" style="font-family:'Zen Dots',cursive;font-size:clamp(1.1rem,3vw,2rem);background:linear-gradient(90deg,var(--rosado),var(--amarillo),var(--celeste));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;animation:fadeDown 1s ease 0.15s both;">
@@ -1367,7 +1480,7 @@
   <div class="section-header reveal">
     <div class="section-tag">🔥 Evento Destacado</div>
     <h2 class="section-title">Próximo Evento</h2>
-    <p class="section-desc">Prepárate para la experiencia de cultura japonesa más grande de la región</p>
+    <p class="section-desc">Prepárate para una experiencia de cultura japonesa</p>
   </div>
 
   <div class="event-hero-card reveal">
@@ -1377,7 +1490,7 @@
           IMAGEN PRINCIPAL DEL EVENTO:
           Mientras llega la gráfica oficial, colocar foto de anime general.
           Reemplazar este div por:
-          <img src="FOTO_ANIME_GENERAL.jpg" alt="Tokyo Dream"
+          <img src="FOTO_ANIME_GENERAL.jpg" alt="Aniversario 3 Años"
                style="width:100%;height:100%;object-fit:cover;">
         -->
         <img src="3 PROXIMO EVENTO (IMAGEN TEMPORAL).jpeg" alt="Próximo Evento"
@@ -1392,7 +1505,7 @@
 
     <div class="event-hero-info">
       <div class="event-featured-tag">⭐ Evento Principal</div>
-      <h3 class="event-hero-title">Tokyo Dream</h3>
+      <h3 class="event-hero-title">Aniversario 3 Años</h3>
       <p class="event-hero-subtitle">Espacio Urbano · Puente Alto</p>
 
       <div class="event-detail-grid">
@@ -1447,7 +1560,7 @@
 <div class="section-divider"></div>
 
 <!-- ── TODOS LOS EVENTOS ── -->
-<section style="padding:80px 5%;">
+<section style="padding:80px 5%; background: radial-gradient(ellipse 90% 60% at 50% 50%, rgba(76,201,240,0.12) 0%, transparent 70%), radial-gradient(ellipse 70% 50% at 20% 0%, rgba(247,37,133,0.15) 0%, transparent 60%), linear-gradient(180deg, #08001A 0%, #0D0025 100%);">
   <div class="section-header reveal">
     <div class="section-tag">🗓️ Agenda</div>
     <h2 class="section-title">Todos los Eventos</h2>
@@ -1463,7 +1576,7 @@
       <div class="event-card-body">
         <div class="event-card-date">📅 7 de Febrero 2026</div>
         <div class="event-card-title">En busca del One Peace</div>
-        <div class="event-card-location">📍 Por confirmar</div>
+        <div class="event-card-location">📍 El Tabo</div>
         <span class="event-card-status status-done">Realizado</span>
       </div>
     </div>
@@ -1476,7 +1589,7 @@
       <div class="event-card-body">
         <div class="event-card-date">📅 28 de Febrero 2026</div>
         <div class="event-card-title">Otaku Summer</div>
-        <div class="event-card-location">📍 Por confirmar</div>
+        <div class="event-card-location">📍 Talagante</div>
         <span class="event-card-status status-done">Realizado</span>
       </div>
     </div>
@@ -1484,13 +1597,13 @@
     <!-- Card 3: 11 Abril 2026 -->
     <div class="event-card reveal">
       <div class="event-card-banner">
-        <img src="4 todos los eventos 11 de abril.png" alt="Tokyo Dream">
+        <img src="4 todos los eventos 11 de abril.png" alt="Aniversario 3 Años">
       </div>
       <div class="event-card-body">
         <div class="event-card-date">📅 11 de Abril 2026</div>
-        <div class="event-card-title">Tokyo Dream</div>
+        <div class="event-card-title">TokyoDream</div>
         <div class="event-card-location">📍 Talagante</div>
-        <span class="event-card-status status-done">Realizado</span>
+        <span class="event-card-status status-announced">Anunciado</span>
       </div>
     </div>
 
@@ -1498,7 +1611,7 @@
     <div class="event-card reveal">
       <div class="event-card-banner banner-general">
         <div class="banner-text">
-          <div class="banner-event-name">PRÓXIMAMENTE</div>
+          <div class="banner-event-name">ANIVERSARIO<br>3 AÑOS</div>
           <div class="banner-subtitle">Espacio Urbano · Puente Alto</div>
         </div>
       </div>
@@ -1525,98 +1638,80 @@
   <div class="activities-grid">
 
     <div class="activity-card reveal" style="--activity-color: linear-gradient(90deg, var(--rosado), var(--morado-light))">
-      <!--
-        FOTO ACTIVIDAD — reemplazar por:
-        <img class="activity-photo" src="FOTO_TIENDAS.jpg" alt="Tiendas Temáticas">
-      -->
       <div class="activity-card-body activity-card-top">
         <div class="activity-name">Tiendas Temáticas</div>
       </div>
-      <div class="activity-photo-placeholder">📷 Foto Tiendas Temáticas</div>
+      <img class="activity-photo" src="5 ACTIVIDADES - TIENDAS TEMATICAS.jpeg" alt="Tiendas Temáticas">
       <div class="activity-card-body">
         <p class="activity-desc">Merchandising oficial de anime, manga, figuras, accesorios y ropa temática japonesa.</p>
       </div>
     </div>
 
     <div class="activity-card reveal" style="--activity-color: linear-gradient(90deg, var(--celeste), var(--morado-light))">
-      <!--
-        FOTO ACTIVIDAD — reemplazar por:
-        <img class="activity-photo" src="FOTO_COSPLAY.jpg" alt="Cosplay">
-      -->
       <div class="activity-card-body activity-card-top">
         <div class="activity-name">Cosplay</div>
       </div>
-      <div class="activity-photo-placeholder">📷 Foto Cosplay</div>
+      <img class="activity-photo" src="5 ACTIVIDADES - COSPLAY.jpeg" alt="Cosplay">
       <div class="activity-card-body">
         <p class="activity-desc">Concursos de cosplay, sesiones de fotos y cosplayers invitados de todo Chile.</p>
       </div>
     </div>
 
     <div class="activity-card reveal" style="--activity-color: linear-gradient(90deg, var(--amarillo), var(--rosado))">
-      <!--
-        FOTO ACTIVIDAD — reemplazar por:
-        <img class="activity-photo" src="FOTO_RANDOM_DANCE.jpg" alt="Random Dance">
-      -->
       <div class="activity-card-body activity-card-top">
-        <div class="activity-name">Random Dance</div>
+        <div class="activity-name">Just Dance</div>
       </div>
-      <div class="activity-photo-placeholder">📷 Foto Random Dance</div>
+      <img class="activity-photo" src="5 ACTIVIDADES - JUST DANCE.jpeg" alt="Just Dance">
       <div class="activity-card-body">
         <p class="activity-desc">Bailes sorpresa de K-pop y anime para todos los fanáticos de la danza.</p>
       </div>
     </div>
 
     <div class="activity-card reveal" style="--activity-color: linear-gradient(90deg, var(--morado-light), var(--celeste))">
-      <!--
-        FOTO ACTIVIDAD — reemplazar por:
-        <img class="activity-photo" src="FOTO_ILUSTRACION.jpg" alt="Ilustración">
-      -->
       <div class="activity-card-body activity-card-top">
         <div class="activity-name">Ilustración</div>
       </div>
-      <div class="activity-photo-placeholder">📷 Foto Ilustración</div>
+      <img class="activity-photo" src="5 ACTIVIDADES - ILUSTRACION.jpeg" alt="Ilustración">
       <div class="activity-card-body">
         <p class="activity-desc">Talleres y exposición de ilustradores chilenos especializados en arte anime.</p>
       </div>
     </div>
 
     <div class="activity-card reveal" style="--activity-color: linear-gradient(90deg, var(--rosado), var(--amarillo))">
-      <!--
-        FOTO ACTIVIDAD — reemplazar por:
-        <img class="activity-photo" src="FOTO_ANIMACION.jpg" alt="Animación">
-      -->
       <div class="activity-card-body activity-card-top">
         <div class="activity-name">Animación</div>
       </div>
-      <div class="activity-photo-placeholder">📷 Foto Animación</div>
+      <img class="activity-photo" src="5 ACTIVIDADDES - ANIMACION.jpeg" alt="Animación">
       <div class="activity-card-body">
         <p class="activity-desc">Shows de animación en vivo, sketches y personajes interactivos para el público.</p>
       </div>
     </div>
 
     <div class="activity-card reveal" style="--activity-color: linear-gradient(90deg, var(--amarillo), var(--celeste))">
-      <!--
-        FOTO ACTIVIDAD — reemplazar por:
-        <img class="activity-photo" src="FOTO_INVITADOS.jpg" alt="Invitados Especiales">
-      -->
       <div class="activity-card-body activity-card-top">
         <div class="activity-name">Invitados Especiales</div>
       </div>
-      <div class="activity-photo-placeholder">📷 Foto Invitados Especiales</div>
+      <img class="activity-photo" src="5 ACTIVIDADES - INVITADOS ESPECIALES.jpeg" alt="Invitados Especiales">
       <div class="activity-card-body">
         <p class="activity-desc">Cosplayers, animadoras y artistas invitados de renombre para shows únicos.</p>
       </div>
     </div>
 
+    <div class="activity-card reveal" style="--activity-color: linear-gradient(90deg, var(--celeste), var(--rosado))">
+      <div class="activity-card-body activity-card-top">
+        <div class="activity-name">Exhibición de Autos</div>
+      </div>
+      <img class="activity-photo" src="5 ACTIVIDADES - EXHIBICION DE AUTOS.jpeg" alt="Exhibición de Autos">
+      <div class="activity-card-body">
+        <p class="activity-desc">Exposición de vehículos temáticos y modificados con estética de cultura otaku.</p>
+      </div>
+    </div>
+
     <div class="activity-card reveal" style="--activity-color: linear-gradient(90deg, var(--morado-light), var(--rosado))">
-      <!--
-        FOTO ACTIVIDAD — reemplazar por:
-        <img class="activity-photo" src="FOTO_GAMER.jpg" alt="Zona Gamer">
-      -->
       <div class="activity-card-body activity-card-top">
         <div class="activity-name">Zona Gamer</div>
       </div>
-      <div class="activity-photo-placeholder">📷 Foto Zona Gamer</div>
+      <img class="activity-photo" src="5 ACTIVIDADES - ZONA GAMER.jpeg" alt="Zona Gamer">
       <div class="activity-card-body">
         <p class="activity-desc">Torneos y exhibición de videojuegos, retro gaming y cultura geek.</p>
       </div>
@@ -1628,7 +1723,7 @@
 <div class="section-divider"></div>
 
 <!-- ── INVITADOS ── -->
-<section id="invitados" style="background:var(--fondo-dark);">
+<section id="invitados" style="background: radial-gradient(ellipse 100% 60% at 50% 50%, rgba(123,47,190,0.22) 0%, transparent 65%), radial-gradient(ellipse 60% 40% at 80% 20%, rgba(247,37,133,0.15) 0%, transparent 55%), linear-gradient(180deg, #0D0025 0%, #08001A 100%);">
   <div class="section-header reveal">
     <div class="section-tag">⭐ Guests</div>
     <h2 class="section-title">Invitados Especiales</h2>
@@ -1639,11 +1734,7 @@
     <!-- Tributo a Cachureos -->
     <div class="guest-card reveal">
       <div class="guest-avatar" style="background:rgba(247,37,133,0.15);border-color:var(--rosado);">
-        <!--
-          FOTO INVITADO — reemplazar por:
-          <img src="FOTO_CACHUREOS.jpg" alt="Tributo a Cachureos">
-        -->
-        🎪
+        <img src="6 INVITADOS ESPECIALES - TRIBUTO A CACHUREOS.jpeg" alt="Tributo a Cachureos">
       </div>
       <div class="guest-name">Tributo a Cachureos</div>
       <div class="guest-role">Show Musical</div>
@@ -1653,11 +1744,7 @@
     <!-- ComoMonos -->
     <div class="guest-card reveal">
       <div class="guest-avatar" style="background:rgba(76,201,240,0.15);border-color:var(--celeste);">
-        <!--
-          FOTO INVITADO — reemplazar por:
-          <img src="FOTO_COMONOS.jpg" alt="ComoMonos">
-        -->
-        🎭
+        <img src="6 INVITADOS ESPECIALES - TRIBUTO A 31 MINUTOS.jpeg" alt="ComoMonos">
       </div>
       <div class="guest-name">ComoMonos</div>
       <div class="guest-role">Tributo a 31 Minutos</div>
@@ -1667,43 +1754,21 @@
     <!-- Tributo a Huntrix -->
     <div class="guest-card reveal">
       <div class="guest-avatar" style="background:rgba(255,214,0,0.15);border-color:var(--amarillo);">
-        <!--
-          FOTO INVITADO — reemplazar por:
-          <img src="FOTO_HUNTRIX.jpg" alt="Tributo a Huntrix">
-        -->
-        🎤
+        <img src="6 INVITADOS ESPECIALES - TRIBUTO A HUNTRIX.jpeg" alt="Tributo a Huntrix">
       </div>
       <div class="guest-name">Tributo a Huntrix</div>
       <div class="guest-role">Show Musical</div>
       <span class="guest-event">Expokai</span>
     </div>
 
-    <!-- Bibi Pokimon -->
-    <div class="guest-card reveal">
-      <div class="guest-avatar" style="background:rgba(168,85,247,0.15);border-color:var(--morado-light);">
-        <!--
-          FOTO INVITADO — reemplazar por:
-          <img src="FOTO_BIBI.jpg" alt="Bibi Pokimon">
-        -->
-        🧸
-      </div>
-      <div class="guest-name">Bibi Pokimon</div>
-      <div class="guest-role">Cosplayer Invitada</div>
-      <span class="guest-event">Tokyo Dream</span>
-    </div>
-
-    <!-- Dana Danita -->
+    <!-- Tributo a Chayanne -->
     <div class="guest-card reveal">
       <div class="guest-avatar" style="background:rgba(247,37,133,0.15);border-color:var(--rosado);">
-        <!--
-          FOTO INVITADO — reemplazar por:
-          <img src="FOTO_DANA.jpg" alt="Dana Danita">
-        -->
-        🎨
+        <img src="6 INVITADOS ESPECIALES - TRIBUTO A CHAYANNE.jpeg" alt="Tributo a Chayanne">
       </div>
-      <div class="guest-name">Dana Danita</div>
-      <div class="guest-role">Artista Invitada</div>
-      <span class="guest-event">Tokyo Dream</span>
+      <div class="guest-name">Tributo a Chayanne</div>
+      <div class="guest-role">Show Musical</div>
+      <span class="guest-event">Aniversario 3 Años</span>
     </div>
 
     <!-- Próximo invitado -->
@@ -1727,7 +1792,7 @@
   </div>
 
   <div class="reveal">
-    <p class="countdown-event-title">🎌 Expokai · 30 de Mayo 2026 · Espacio Urbano, Puente Alto 🎌</p>
+    <p class="countdown-event-title">🎌 Aniversario 3 Años · 30 de Mayo 2026 · Espacio Urbano, Puente Alto 🎌</p>
     <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:8px;">Mantente atento a nuestras redes para más información</p>
   </div>
 
